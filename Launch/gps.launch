@@ -1,0 +1,19 @@
+<launch>
+  <node pkg="jackal_base" type="jackal_node" name="jackal_node">
+    <rosparam>
+      # TODO: Specify these in code rather than here.
+      require:
+        publishers:
+          - status
+          - feedback
+          - imu/data_raw
+          - navsat/nmea_sentence
+        subscribers:
+          - cmd_drive
+          - wifi_connected
+    </rosparam>
+    <param name="port" value="COM6" />
+  </node>
+  <node pkg="rosserial_python" type="message_info_service.py" name="rosserial_message_info" />
+  <node pkg="nmea_navsat_driver" type="nmea_topic_driver" name="nmea_topic_driver" ns="navsat" />
+</launch>

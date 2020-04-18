@@ -1,0 +1,26 @@
+<robot>
+  <!-- This file is an example that can be included from jackal.urdf.xacro
+       by setting the JACKAL_URDF_EXTRAS environment variable to the full
+       path of this file. -->
+
+  <camera_mount prefix="front" tilt="0.5236"/>
+  <joint name="front_camera_mount_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="front_mount" />
+    <child link="front_camera_mount" />
+  </joint>
+
+    <link name="front_camera_mount">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <!-- Origin of this mesh is the base of the bracket. -->
+          <mesh filename="package://ros_msft_jackal/meshes/camera-bracket.stl"/>
+        </geometry>
+        <material name="dark_grey" />
+      </visual>
+    </link>
+
+  <bridge_plate mount="mid" height="0.20" />
+
+</robot>
